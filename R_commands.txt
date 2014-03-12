@@ -1,0 +1,56 @@
+#Author Aamin Lakhani
+
+getwd()
+setwd("C:/Users/aamin/Desktop/Twitte_WD")
+files<-list.files(pattern=".csv")
+DF<-NULL
+for(f in files)
+{
+print ("hi")
+data <- read.csv(f, header=FALSE)
+DF<-rbind(DF,data)
+}
+
+data<-NULL
+
+data <- read.csv("user1.csv", header=FALSE)
+summary(DF)
+levels(DF)
+names(DF)<- c("USER_ID","FRIENDS","FOLLOWER","TWEETS","FAVOURITES","CREATE_DATE")
+head(DF,10) 
+
+max(DF$CREATE_DATE)
+  == 11060753
+(DF,DF$FOLLOWER  == 11060753)
+
+plot(DF$FRIENDS, DF$TWEETS, pch=19)
+
+plot(DF)
+
+cor(DF$FRIENDS,DF$FOLLOWER)
+cor(DF$FRIENDS,DF$TWEETS)
+cor(DF$FRIENDS,DF$FAVOURITES)
+cor(DF$FOLLOWER,DF$TWEETS)
+cor(DF$FOLLOWER,DF$FAVOURITES)
+cor(DF$TWEETS,DF$FAVOURITES)
+
+
+plot(DF$FRIENDS+DF$FOLLOWER, DF$TWEETS, pch=19)
+
+results = lm(DF$TWEETS ~ DF$FRIENDS+DF$FOLLOWER, data=DF) 
+results
+summary(results)
+plot(results)
+
+layout(matrix(c(1,2,3,4),2,2))
+plot(results)
+
+HTData <- read.csv("top_10_hashtags_day.csv", header=FALSE)
+names(HTData)<- c("DATE","HASHTAG","COUNT","hashtag")
+head(HTData)
+
+ccData<-subset(HTData,HTData$hashtag=="constantcontact")
+ccData$DATE<-as.Date(ccData$DATE,"%m/%d/%yyyy")
+summary(ccData)
+
+plot(ccData$DATE,ccData$COUNT)
