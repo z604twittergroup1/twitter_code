@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+//Author: Kris Rutherford
 
 public class Tweet_Cleaner {
 

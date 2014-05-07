@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import mineHashTags.LuceneHashTags;
-
+//author Mohamed Mohamed
 public class neo4jJDBC {
 	public String getRecommendations (String tweet, String uid, String useFollow) throws SQLException, ClassNotFoundException
 	{
